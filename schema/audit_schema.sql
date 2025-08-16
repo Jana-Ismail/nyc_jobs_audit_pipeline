@@ -1,0 +1,37 @@
+-- CREATE TABLE statements for final tables
+
+-- TABLE 1
+-- 2024-2025 NYC Job Postings
+    -- posting date is in 2024 or 2025
+    -- Fields from job postings data
+        -- 'Job Id'
+        -- 'Agency'
+        -- 'Business Title'
+        -- 'Career Level'
+        -- 'Salary Range From'
+        -- 'Salary Range To'
+        -- 'Salary Frequency'
+    -- Fields from the payroll data (fuzzy string matching in gold layer)
+        -- 'Payroll Salary Min'
+        -- 'Payroll Salary Max'
+    -- Fuzzy matching ratio > 85
+        -- 'Match Ratio'
+
+-- Table 2
+-- 2024-2025 Posting Duration
+    -- posting date is in 2024 or 2025
+    -- Fields from job postings data
+        -- 'Job Id'
+        -- 'Agency'
+        -- 'Business Title'
+        -- 'Posting Date'
+        -- 'Posting Duration' 
+            -- in days 
+            -- calculate where available
+            -- calculate with 'Posting Date' and 'Post Until' dates
+    -- Fields from Lightcast data
+        -- 'Lightcast Job Title'
+        -- 'Lightcast Total Postings'
+        -- 'Lightcast Median Posting Duration'
+    -- Fuzzy matching ratio > 75
+        -- 'Match Ratio'
