@@ -1,5 +1,6 @@
 # Core data tools
 python-dotenv
+pandas
 requests
 openpyxl
 rapidfuzz
@@ -8,8 +9,7 @@ duckdb
 dbt-duckdb
 apache-airflow[celery,postgres,http]==2.9.2
 
-# possibly
-# pandas
+# possible dependencies
 # polars
 # soda-core-duckdb
     # need to research this one
