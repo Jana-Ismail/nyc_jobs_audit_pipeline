@@ -1,2 +1,3 @@
-# Fetch raw CSV files from API
-# Place in local folder
+import logging
+
+logger = logging.getLogger(__name__)
