@@ -2,6 +2,18 @@
 .env
 .venv
 
+# data files, database files, and storage directories
+data/
+lakehouse/
+*.csv
+*.parquet
+*.xlsx
+*.db
+
+# logs
+logs/
+*.log
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

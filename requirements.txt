@@ -1,4 +1,3 @@
-# Core data tools
 python-dotenv
 pandas
 requests
