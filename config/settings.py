@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Project root config
@@ -20,6 +21,14 @@ RAW_FILES = {
     'job_postings': RAW_DATA_DIR / 'nyc_job_postings.csv',
     'payroll': RAW_DATA_DIR / 'nyc_payroll.csv',
     'lightcast': RAW_DATA_DIR / 'lightcast_job_analytics.xlsx'
+}
+
+# Testing files and data
+TEST_DATA_DIR = PROJECT_ROOT / 'data' / 'raw'
+TEST_RAW_FILES = {
+    'job_postings': TEST_DATA_DIR / 'sample_nyc_job_postings.csv',
+    'payroll': TEST_DATA_DIR / 'sample_nyc_payroll.csv',
+    'lightcast': TEST_DATA_DIR / 'sample_lightcast_job_analytics.xlsx'
 }
 
 API_SAMPLE_FILES = {

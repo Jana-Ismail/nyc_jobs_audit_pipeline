@@ -7,6 +7,10 @@ def ensure_directory_exists(path):
     path.mkdir(parents=True, exist_ok=True)
     return path
 
+def validate_file_exists(filepath):
+    
+    return Path(filepath).exists()
+
 def get_file_size(path):
     pass
 
