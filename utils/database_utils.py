@@ -2,9 +2,9 @@ import duckdb
 from pathlib import Path
 from utils.file_utils import ensure_directory_exists
 from utils.logging_utils import setup_logger
-from config.settings import DATABASE_PATH, BRONZE_SCHEMA, SILVER_SCHEMA, GOLD_SCHEMA, LOG_FILE_NAME
+from config.settings import DATABASE_PATH, BRONZE_SCHEMA, SILVER_SCHEMA, GOLD_SCHEMA, LOG_FILE_PATH
 
-logger = setup_logger(__name__, LOG_FILE_NAME)
+logger = setup_logger(__name__, LOG_FILE_PATH)
 
 def setup_lakehouse(db_path=DATABASE_PATH):
     """Initialize the DuckDB lakehouse database with proper schemas."""
