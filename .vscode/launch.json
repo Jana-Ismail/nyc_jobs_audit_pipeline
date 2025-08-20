@@ -8,7 +8,7 @@
         "name": "Python: Module",
         "type": "python",
         "request": "launch",
-        "module": "src.extract.data_acquisition",
+        "module": "src.ingest.data_acquisition",
         "cwd": "${workspaceFolder}"
         }
     ]
