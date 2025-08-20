@@ -112,7 +112,7 @@ def save_data_to_bronze_schema(bytes_data, dataset_name, api_url, batch_id, chun
     logger.info(f'Saving {dataset_name} chunk {chunk_number} to bronze.{table_name}')
 
     try:
-        dataframe = pl.read_csv(io.BytesIO(bytes_data))
+        dataframe = pl.read_csv(io.BytesIO(bytes_data), infer_schema_length=1000)
 
         if dataframe.height == 0:
             logger.warning(f"No data in {dataset_name} chunk {chunk_number}. Skipping save.")
@@ -416,29 +416,51 @@ def main():
 
     setup_lakehouse(DATABASE_PATH)
 
-    # try:
-    #     logger.info(f"Current row count for {JOB_POSTINGS_DATASET_NAME}: {get_table_row_count(JOB_POSTINGS_DATASET_NAME)}")
+    logger.info("Ingesting NYC Job Postings data")
+    try:
+        logger.info(f"Current row count for {JOB_POSTINGS_DATASET_NAME}: {get_table_row_count(JOB_POSTINGS_DATASET_NAME)}")
         
-    #     result = ingest_job_postings(limit=1000, max_rows=6000)
+        result = ingest_job_postings(limit=1000, max_rows=10000)
         
-    #     logger.info(f"Ingestion completed: {result}")
-    #     logger.info(f"New row count for {JOB_POSTINGS_DATASET_NAME}: {get_table_row_count(JOB_POSTINGS_DATASET_NAME)}")
+        logger.info(f"Ingestion completed: {result}")
+        logger.info(f"New row count for {JOB_POSTINGS_DATASET_NAME}: {get_table_row_count(JOB_POSTINGS_DATASET_NAME)}")
         
-    #     # Show batch info
-    #     batch_info = get_latest_batch_info(JOB_POSTINGS_DATASET_NAME)
-    #     if batch_info:
-    #         logger.info(f"Latest batch info: {batch_info}")
+        # Show batch info
+        batch_info = get_latest_batch_info(JOB_POSTINGS_DATASET_NAME)
+        if batch_info:
+            logger.info(f"Latest batch info: {batch_info}")
             
-    # except Exception as e:
-    #     logger.error(f"Error in main ingestion process: {e}")
-    #     raise
+    except Exception as e:
+        logger.error(f"Error in main ingestion process: {e}")
+        raise
 
-    logger.info("Converting Lightcast .xls to .xlsx")
-    table_names = convert_xls_to_xlsx(
-        xls_file_path=XLS_LIGHTCAST_PATH,
-        xlsx_file_path=XLSX_LIGHTCAST_PATH,
-        sheet_names=LIGHTCAST_SHEET_NAMES_ALL
+    logger.info("Ingesting NYC Payroll data ")
+    try:
+        logger.info(f"Current row count for {PAYROLL_DATASET_NAME}: {get_table_row_count(PAYROLL_DATASET_NAME)}")
+
+        result = ingest_payroll(limit=1000, max_rows=10000)
+
+        logger.info(f"Ingestion completed: {result}")
+        logger.info(f"New row count for {PAYROLL_DATASET_NAME}: {get_table_row_count(PAYROLL_DATASET_NAME)}")
+        
+        # Show batch info
+        batch_info = get_latest_batch_info(PAYROLL_DATASET_NAME)
+        if batch_info:
+            logger.info(f"Latest batch info: {batch_info}")
+    except Exception as e:
+        logger.error(f"Error in main ingestion process: {e}")
+        raise
+
+    logger.info("Ingesting Lightcast Excel data")
+    try:
+        logger.info("Converting Lightcast .xls to .xlsx")
+        table_names = convert_xls_to_xlsx(
+            xls_file_path=XLS_LIGHTCAST_PATH,
+            xlsx_file_path=XLSX_LIGHTCAST_PATH,
+            sheet_names=LIGHTCAST_SHEET_NAMES_ALL
     )
+    except Exception as e:
+        logger.error(f"Error converting Lightcast .xls to .xlsx: {e}")
 
     logger.info('Loading Lightcast .xlsx sheets to DuckDB bronze schema')
     try:
@@ -449,9 +471,6 @@ def main():
         )
     except Exception as e:
         logger.error(f"Error loading Lightcast Excel sheets to bronze: {e}")
-        raise
-
-    
 
 if __name__ == "__main__":
     main()
