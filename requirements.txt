@@ -10,6 +10,8 @@ dbt-duckdb
 apache-airflow[celery,postgres,http]==2.9.2
 pip-tools
 pyarrow
+notebook
+xlrd
 
 # possible dependencies
 # soda-core-duckdb

@@ -7,6 +7,9 @@ def get_current_utc_timestamp(date_format_str):
     # return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S")
     return datetime.now(timezone.utc).strftime(date_format_str)
 
+def get_current_utc_iso_timestamp():
+    return datetime.now(timezone.utc).isoformat()
+
 def format_date_for_filename():
     pass
 
