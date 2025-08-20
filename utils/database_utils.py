@@ -36,6 +36,19 @@ def get_duckdb_connection(db_path=DATABASE_PATH):
 
     return conn
 
+def install_duckdb_excel_extension(conn):
+    """Install and load the DuckDB Excel extension."""
+    try:
+        conn.execute("INSTALL 'spatial';")
+        conn.execute("INSTALL 'excel';")
+        
+        conn.execute("LOAD 'spatial';")
+        conn.execute("LOAD 'excel';")
+        logger.info("DuckDB Excel extension installed and loaded.")
+    except Exception as e:
+        logger.error(f"Error installing/loading DuckDB Excel extension: {e}")
+        # raise
+
 def execute_query(query, db_path=DATABASE_PATH):
     """Execute a query and return the results"""
     conn = get_duckdb_connection(db_path)

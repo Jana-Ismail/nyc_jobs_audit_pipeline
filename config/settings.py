@@ -9,16 +9,87 @@ LOG_DIR = PROJECT_ROOT / 'logs'
 LOG_FILE_NAME = 'nyc_hiring_audit_pipeline.log'
 LOG_FILE_PATH = LOG_DIR / LOG_FILE_NAME
 
+# API CSV endpoints
 API_ENDPOINTS = {
     'nyc_job_postings': 'https://data.cityofnewyork.us/resource/kpav-sd4t.csv',
     'nyc_payroll': 'https://data.cityofnewyork.us/resource/k397-673e.csv'
 }
 
+# EXCEL FILES
+XLS_LIGHTCAST_PATH = PROJECT_ROOT / 'data' / 'raw' / 'lightcast_nyc_job_analytics.xls'
+
+# Converted .xlsx file path
+XLSX_LIGHTCAST_PATH = PROJECT_ROOT / 'data' / 'raw' / 'lightcast_nyc_job_analytics.xlsx'
+
+LIGHTCAST_SHEET_NAMES_ALL = [
+    'Cover Page', 
+    'Parameters', ''
+    'Executive Summary', 
+    'Advertised Salary', 
+    'Advertised Salary Trend', 
+    'Full Text Job Posting Samples', 
+    'Job Postings Timeseries', 
+    'Edu and Experience Breakdown', 
+    'Edu and Experience Break... (2)', 
+    'Edu and Experience Break... (3)', 
+    'Job Postings Top Companies', 
+    'Job Postings Top Cities', 
+    'Job Postings Top Occs', 
+    'Job Postings Top Occs (2)', 
+    'Job Postings Top Occs (3)', 
+    'Job Postings Job Titles', 
+    'Job Postings Top Inds', 
+    'Top Specialized Skills', 
+    'Top Common Skills', 
+    'Top Software Skills', 
+    'Top Qualifications (2)', 
+    'Appendix A', 
+    'Appendix B - Data Sources an...'
+]
+
+LIGHTCAST_SHEET_NAMES_METADATA = [
+    'Cover Page',
+    'Parameters',
+    'Executive Summary',
+    'Appendix B - Data Sources an...'
+]
+
+LIGHTCAST_SHEET_NAMES_TO_KEEP = [
+    'Advertised Salary', 
+    'Advertised Salary Trend', 
+    'Full Text Job Posting Samples', 
+    'Job Postings Timeseries', 
+    'Edu and Experience Breakdown', 
+    'Edu and Experience Break... (2)', 
+    'Edu and Experience Break... (3)', 
+    'Job Postings Top Companies', 
+    'Job Postings Top Cities', 
+    'Job Postings Top Occs', 
+    'Job Postings Top Occs (2)', 
+    'Job Postings Top Occs (3)', 
+    'Job Postings Job Titles', 
+    'Job Postings Top Inds', 
+    'Top Specialized Skills', 
+    'Top Common Skills', 
+    'Top Software Skills', 
+    'Top Qualifications (2)',
+    'Appendix A',
+]
+
+XLSX_LIGHTCAST_SHEET_NAMES_TO_KEEP = [
+    'Job Postings Job Titles',
+    'Advertised Salary Trend',
+    'Full Text Job Posting Samples',
+    'Job Postings Timeseries',
+    'Edu and Experience Breakdown',
+    'Edu and Experience Break... (2)'
+]
+
 # Dataset reference names
 DATASET_NAMES = {
     'job_postings': 'nyc_job_postings',
     'payroll': 'nyc_payroll',
-    'lightcast': 'lightcast_job_analytics'
+    'lightcast': 'lightcast_nyc_job_analytics'
 }
 
 # data/raw config
