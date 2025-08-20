@@ -2,11 +2,11 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'dbt_duckdb_project'
+name: 'nyc_hiring_audit_pipeline'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'dbt_duckdb_project'
+profile: 'dbt_dev'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -32,5 +32,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_duckdb_project:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    silver:
+      +materialized: incremental
+    gold:
+      +materialized: table

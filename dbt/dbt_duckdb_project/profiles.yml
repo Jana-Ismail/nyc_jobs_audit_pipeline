@@ -1,0 +1,8 @@
+dbt_dev:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'lakehouse/nyc_hiring_audit.duckdb'
+      schema: silver
+      threads: 1
