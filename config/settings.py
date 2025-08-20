@@ -14,35 +14,44 @@ API_ENDPOINTS = {
     'nyc_payroll': 'https://data.cityofnewyork.us/resource/k397-673e.csv'
 }
 
-# data/raw config
-RAW_DATA_DIR = PROJECT_ROOT / 'data' / 'raw'
-
-RAW_FILES = {
-    'job_postings': RAW_DATA_DIR / 'nyc_job_postings.csv',
-    'payroll': RAW_DATA_DIR / 'nyc_payroll.csv',
-    'lightcast': RAW_DATA_DIR / 'lightcast_job_analytics.xlsx'
+# Dataset reference names
+DATASET_NAMES = {
+    'job_postings': 'nyc_job_postings',
+    'payroll': 'nyc_payroll',
+    'lightcast': 'lightcast_job_analytics'
 }
+
+# data/raw config
+# RAW_DATA_DIR = PROJECT_ROOT / 'data' / 'raw'
+
+# RAW_FILES = {
+#     'job_postings': RAW_DATA_DIR / 'nyc_job_postings.csv',
+#     'payroll': RAW_DATA_DIR / 'nyc_payroll.csv',
+#     'lightcast': RAW_DATA_DIR / 'lightcast_job_analytics.xlsx'
+# }
 
 # Testing files and data
-TEST_DATA_DIR = PROJECT_ROOT / 'data' / 'raw'
-TEST_RAW_FILES = {
-    'job_postings': TEST_DATA_DIR / 'sample_nyc_job_postings.csv',
-    'payroll': TEST_DATA_DIR / 'sample_nyc_payroll.csv',
-    'lightcast': TEST_DATA_DIR / 'sample_lightcast_job_analytics.xlsx'
-}
+# TEST_DATA_DIR = PROJECT_ROOT / 'data' / 'raw'
+# TEST_RAW_FILES = {
+#     'job_postings': TEST_DATA_DIR / 'sample_nyc_job_postings.csv',
+#     'payroll': TEST_DATA_DIR / 'sample_nyc_payroll.csv',
+#     'lightcast': TEST_DATA_DIR / 'sample_lightcast_job_analytics.xlsx'
+# }
 
-API_SAMPLE_FILES = {
-    'job_postings': RAW_DATA_DIR / 'nyc_job_postings_sample.csv',
-    'payroll': RAW_DATA_DIR / 'nyc_payroll_sample.csv',
-    'lightcast': RAW_DATA_DIR / 'lightcast_job_analytics_sample.xlsx'
-}
+# API_SAMPLE_FILES = {
+#     'job_postings': RAW_DATA_DIR / 'nyc_job_postings_sample.csv',
+#     'payroll': RAW_DATA_DIR / 'nyc_payroll_sample.csv',
+#     'lightcast': RAW_DATA_DIR / 'lightcast_job_analytics_sample.xlsx'
+# }
 
 # DuckDB config
-LAKEHOUSE_DIR = PROJECT_ROOT / 'lakehouse'
-DUCKDB_DB = LAKEHOUSE_DIR / 'nyc_audit.duckdb'
-# DUCKDB_RAW_PATH = LAKEHOUSE_DATA_DIR / 'raw'
-# DUCKDB_SILVER_PATH = LAKEHOUSE_DATA_DIR / 'silver'
-# DUCKDB_GOLD_PATH = LAKEHOUSE_DATA_DIR / 'gold'
+DATA_DIR = PROJECT_ROOT / 'lakehouse'
+DATABASE_NAME = 'nyc_hiring_audit.duckdb'
+DATABASE_PATH = DATA_DIR / DATABASE_NAME
+
+BRONZE_SCHEMA = 'bronze'
+SILVER_SCHEMA = 'silver'
+GOLD_SCHEMA = 'gold'
 
 FUZZY_MATCHING_THRESHOLDS= {
     "job_postings_salary_match": 85,

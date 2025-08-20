@@ -3,8 +3,9 @@ from datetime import datetime, timezone, timedelta, date
 def validate_date_format(date_str, date_format):
     pass
 
-def get_current_utc_timestamp():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+def get_current_utc_timestamp(date_format_str):
+    # return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S")
+    return datetime.now(timezone.utc).strftime(date_format_str)
 
 def format_date_for_filename():
     pass
