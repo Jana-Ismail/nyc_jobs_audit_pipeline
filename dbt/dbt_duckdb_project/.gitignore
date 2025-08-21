@@ -6,3 +6,4 @@ logs/
 profiles.yml
 sources.yml
 user.yml
+*.yml
