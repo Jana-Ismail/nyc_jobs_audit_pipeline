@@ -1,8 +1,0 @@
-dbt_dev:
-  target: dev
-  outputs:
-    dev:
-      type: duckdb
-      path: '/Users/janaismail/workspace/de_2025/group_projects/project-4/nyc_hiring_audit_pipeline/lakehouse/nyc_hiring_audit.duckdb'
-      schema: main
-      threads: 1

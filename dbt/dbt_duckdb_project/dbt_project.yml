@@ -32,7 +32,15 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_duckdb_project:
     # Config indicated by + and applies to all files under models/example/
-    silver:
+    staging:
       +materialized: incremental
-    gold:
+      +schema: silver
+    marts:
       +materialized: table
+      +schema: gold
+
+vars:
+  payroll_match_threshold: 85
+  lightcast_match_threshold: 75
+  target_years: ['2024', '2025']
+  default_posting_duration_days: 30
